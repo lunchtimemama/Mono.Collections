@@ -1,0 +1,21 @@
+2009-05-13  Scott Peterson  <lunchtimemama@gmail.com>
+
+	Initial commit. This sets up the project and includes the data structure
+	which inspired the project, the good ole ContiguousSplayedRadixTree.
+	The CSRT is appropriate when using string keys for lookup into a read-
+	only collection of fewer than 65,536 items when many of the keys share
+	prefixs. The structure is only half-done: the lookup algorithm is
+	written (but not tested), but the constructor is currently empty - there
+	is no way to get data into the structure.
+
+	I would like this project to become an effort to learn about, build,
+	test and discuss data structures. I personally haven't done serious
+	asymptotic analysis or data structure study since college. I usually
+	just use one of a few types from System.Collections.Generic: a List
+	for storing stuff, a Dictionary for lookup, and a Stack or Queue for
+	certain algorithms. I would really like to work with other smart people
+	on developing highly specialized data structures and studying their
+	performance characteristics. Making these data structures available
+	and useful would be nice, but at the moment I'm mainly interested in
+	broadening my knowledge of data structures. Anyone interested in joining
+	me is more than welcome!

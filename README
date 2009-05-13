@@ -1,0 +1,21 @@
+Mono.Collections is a library of highly optimized data structures and an API for
+obtaining the most appropriate data structure based on capability needs and
+usage.
+
+The System.Collections namespaces consist largely of "Goldy Locks" data
+structures which are designed for general use in the broadest possible set of
+situations. While these structures have good performance, they lack the
+aggressive optimizations possible with more specialized data structures.
+
+The BCL collections API also suffers from a "type menagerie" design: users must
+cultivate a familiarity with the available collection types and choose the
+appropriate data structure for the situation. Any expansion of this menagerie to
+include more, highly specialized structures would further degrade the usability
+of such an API.
+
+Mono.Collections provides an API through which users declare their capability
+and usage needs and the library selects the appropriate specialized collection
+type. This allows users with little or no familiarity with data structures and
+complexity to capitalize on the knowledge and expertise of the Mono.Collections
+authors. It also relieves users from the burden of knowing the available
+structures and their particulars.
