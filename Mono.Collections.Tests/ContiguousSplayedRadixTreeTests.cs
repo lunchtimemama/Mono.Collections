@@ -26,6 +26,7 @@
 
 using System;
 using System.Collections.Generic;
+using System.IO;
 
 using Mono.Collections.DataStructures;
 
@@ -57,6 +58,21 @@ namespace Mono.Collections.Tests
 			Assert.IsFalse (csrt.ContainsKey ("AR"));
 			Assert.IsFalse (csrt.ContainsKey ("ARG_"));
 			Assert.IsFalse (csrt.ContainsKey ("ARG_Browse_Foo"));
+		}
+		
+		[Test]
+		public void SortedWorldInputTest ()
+		{
+			using (var reader = new StreamReader (Path.Combine ("data", "world"))) {
+				var pairs = new List<KeyValuePair<string, bool>> ();
+				while (!reader.EndOfStream) {
+					pairs.Add (new KeyValuePair<string, bool> (reader.ReadLine (), true));
+				}
+				var csrt = new ContiguousSplayedRadixTree<bool> (pairs);
+				foreach (var pair in pairs) {
+					Assert.IsTrue (csrt[pair.Key]);
+				}
+			}
 		}
 	}
 }

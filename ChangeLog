@@ -1,5 +1,17 @@
 2009-05-13  Scott Peterson  <lunchtimemama@gmail.com>
 
+	* Mono.Collections/Mono.Collections.DataStructures/ContiguougSplayedRadixTree.cs:
+	Uncovered a little bug while unit testing. Yeah! Fixed.
+
+	* Mono.Collections.Tests/ContiguougSplayedRadixTreeTests.cs: Added a new
+	test which stores and retrieves all of the countries in the world
+	(according to the 2008 CIA World Factbook).
+
+	* Mono.Collections.Tests/data/world: Added a file with the countries/
+	regions of the world in alphabetical order.
+
+2009-05-13  Scott Peterson  <lunchtimemama@gmail.com>
+
 	* Mono.Collections/Mono.Collections.Internal/SinglyLinkedList.cs: Had
 	build bugs in here. Oops. Guess I got a little excited.
 

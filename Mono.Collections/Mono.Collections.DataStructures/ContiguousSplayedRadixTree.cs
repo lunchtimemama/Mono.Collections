@@ -250,7 +250,9 @@ namespace Mono.Collections.DataStructures
 			}
 			if (insertion_point.Value == 0) {
 				insertion_point = insertion_point.Next;
+				length++;
 			}
+			length++;
 			if (left > 0) {
 				var new_left = left >> 0x1;
 				var new_index = (index - left) + new_left;
@@ -261,6 +263,7 @@ namespace Mono.Collections.DataStructures
 				}
 				node.AddAfter ((char)relative_index, insertion_point);
 				insertion_point = insertion_point.Next;
+				length++;
 				node.AddLast (left_node);
 			}
 			if (right > 0) {
@@ -341,17 +344,14 @@ namespace Mono.Collections.DataStructures
 						tree_index += length;
 						if (tree[tree_index] == 0) {
 						
-							// If the node has no children, the relative
-							// address of the node to our left in the
-							// binary tree is stored two after 'end'
-							tree_index += tree[tree_index + 2];
-						} else {
-							
-							// If the node has children, the relative
-							// address of the node to our left in the
-							// binary tree is stored directly after 'end'
-							tree_index += tree[tree_index + 1];
+							// If the node has no children, we need
+							// to skip over the element containing
+							// the value index.
+							tree_index++;
 						}
+						
+						tree_index++;
+						tree_index += tree[tree_index];
 						
 						// We split the left and right values
 						
@@ -380,17 +380,21 @@ namespace Mono.Collections.DataStructures
 						tree_index += length;
 						if (tree[tree_index] == 0) {
 						
-							// If the node has no children, the relative
-							// address of the node to our right in the
-							// binary tree is stored three after 'end'
-							tree_index += tree[tree_index + 3];
-						} else {
-							
-							// If the node has children, the relative
-							// address of the node to our left in the
-							// binary tree is stored two after 'end'
-							tree_index += tree[tree_index + 2];
+							// If the node has no children, we need
+							// to skip over the element containing
+							// the value index.
+							tree_index++;
 						}
+						if (left != 0) {
+						
+							// If there is space on the right, we need
+							// to skip over the element containing the
+							// right node relative index.
+							tree_index++;
+						}
+						
+						tree_index++;
+						tree_index += tree[tree_index];
 						
 						// We split the left and right values
 						
