@@ -1,5 +1,5 @@
 // 
-// ContiguousSplayedRadixTree.cs
+// ContiguousTernarySearchTree.cs
 //  
 // Author:
 //       Scott Peterson <lunchtimemama@gmail.com>
@@ -44,7 +44,7 @@ namespace Mono.Collections.DataStructures
 	// Cons: Readonly, 65,536 maximum capacity, 2,147,483,648 maximum structure size
 	//
 	// Biography:
-	// The contiguous splayed radix tree is a memory-efficient data structure to store values
+	// The contiguous ternary search tree is a memory-efficient data structure to store values
 	// by unique key strings. It is based on a radix tree (also know as a crit bit trie) which
 	// is a kind of trie. The radix tree is stored in a single char array, hense "contigugous."
 	// By storing the entire structure in a single array, we improve the locality of memory and
@@ -54,16 +54,16 @@ namespace Mono.Collections.DataStructures
 	// The radix tree is also highly compact. The amount of memory consumed by the entire tree
 	// is often less than the amount of memory required to contain all of the constituent keys.
 	// The children of each node in the tree are stored in balanced binary trees, hense
-	// "splayed." This allows for O(log n) search time among the children of a given node. The
+	// "ternary." This allows for O(log n) search time among the children of a given node. The
 	// added complexity of a binary search is only warented if the average number of children
 	// per node is high (4 or higher). When the system constructs the radix tree, it analyses
-	// the structure of the tree and chooses between ContiguousSplayedRadixTree and
+	// the structure of the tree and chooses between ContiguousTernarySearchTree and
 	// ContiguousRadixTree (a similar structure, but with an ordered list of children as
 	// opposed to a binary tree) as appropriate. The use of a char array limits the number of
 	// total items the tree can store to 65,536 (the number of values representable with 16
 	// bits). To store more than 65,536 items, use a pointer-based trie.
 	
-	public sealed class ContiguousSplayedRadixTree<T>
+	public sealed class ContiguousTernarySearchTree<T>
 	{
 		// The children of a node in the prefix tree are
 		// arranged into a balanced binary tree which
@@ -103,7 +103,7 @@ namespace Mono.Collections.DataStructures
 		readonly char[] tree;
 		readonly T[] values;
 		
-		public ContiguousSplayedRadixTree (IList<KeyValuePair<string, T>> keyValuePairs)
+		public ContiguousTernarySearchTree (IList<KeyValuePair<string, T>> keyValuePairs)
 		{
 			// The CSRT has a very compact, very specific layout in memory.
 			// The construction of this layout is non-trivial. We start with

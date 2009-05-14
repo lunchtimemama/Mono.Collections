@@ -1,5 +1,12 @@
 2009-05-13  Scott Peterson  <lunchtimemama@gmail.com>
 
+	* Mono.Collections/Mono.Collections.DataStructures/ContiguousTernarySearchTree.cs:
+	* Mono.Collections.Tests/ContiguousTernarySearchTreeTests.cs:
+	Renamed to the data structure to the more well-known "ternary search
+	tree."
+
+2009-05-13  Scott Peterson  <lunchtimemama@gmail.com>
+
 	* Mono.Collections/Mono.Collections.DataStructures/ContiguougSplayedRadixTree.cs:
 	Uncovered a little bug while unit testing. Yeah! Fixed.
 

@@ -1,5 +1,5 @@
 // 
-// ContiguousSplayedRadixTreeTests.cs
+// ContiguousTernarySearchTreeTests.cs
 //  
 // Author:
 //       Scott Peterson <lunchtimemama@gmail.com>
@@ -35,7 +35,7 @@ using NUnit.Framework;
 namespace Mono.Collections.Tests
 {
 	[TestFixture]
-	public class ContiguousSplayedRadixTreeTests
+	public class ContiguousTernarySearchTreeTests
 	{
 		[Test]
 		public void SortedInputTest ()
