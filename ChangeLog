@@ -1,5 +1,23 @@
 2009-05-13  Scott Peterson  <lunchtimemama@gmail.com>
 
+	* Mono.Collections/Mono.Collections.DataStructures/ContiguougSplayedRadixTree.cs:
+	It's alive! The CSRT is now in working order. There is more API work to
+	be done (for example, we currently take for granted that you pass a
+	sorted collection of keys and values), but all of the logic is in place.
+	This is about as good as string key lookup gets, kids. For a virtual
+	machine, anyway. And for read-only data sets. Of fewer than 65,536
+	items. YEAH!
+
+	* Mono.Collections/Mono.Collections.Internal/SinglyLinkedList.cs:
+	* Mono.Collections/Mono.Collections.Internal/SinglyLinkedListNode.cs:
+	Added simple singly linked list for use in the CSRT constructor. It
+	has some nessisary functionality that is lacking from the BCL LL.
+
+	* Mono.Collections.Tests/*: If you're not writing unit tests, you're not
+	doing it right. A simple correctness test for the CSRT. Need more tests!
+
+2009-05-13  Scott Peterson  <lunchtimemama@gmail.com>
+
 	Initial commit. This sets up the project and includes the data structure
 	which inspired the project, the good ole ContiguousSplayedRadixTree.
 	The CSRT is appropriate when using string keys for lookup into a read-
