@@ -61,8 +61,8 @@ namespace Mono.Collections.Internal
 			list.Last.Next = First;
 			First = list.First;
 			Count += list.Count;
-			list.First = 0;
-			list.Last = 0;
+			list.First = null;
+			list.Last = null;
 			list.Count = 0;
 		}
 		
@@ -72,7 +72,7 @@ namespace Mono.Collections.Internal
 			Last = list.Last;
 			Count += list.Count;
 			list.First = null;
-			list.Last == null;
+			list.Last = null;
 			list.Count = 0;
 		}
 		

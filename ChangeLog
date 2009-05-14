@@ -1,5 +1,10 @@
 2009-05-13  Scott Peterson  <lunchtimemama@gmail.com>
 
+	* Mono.Collections/Mono.Collections.Internal/SinglyLinkedList.cs: Had
+	build bugs in here. Oops. Guess I got a little excited.
+
+2009-05-13  Scott Peterson  <lunchtimemama@gmail.com>
+
 	* Mono.Collections/Mono.Collections.DataStructures/ContiguougSplayedRadixTree.cs:
 	It's alive! The CSRT is now in working order. There is more API work to
 	be done (for example, we currently take for granted that you pass a
