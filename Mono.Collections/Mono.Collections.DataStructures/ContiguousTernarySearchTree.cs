@@ -300,7 +300,6 @@ namespace Mono.Collections.DataStructures
 		
 		int GetValueIndex (string key)
 		{
-			var key_length = key.Length;
 			var key_index = 0;
 			var tree_index = 1;
 			
@@ -327,7 +326,7 @@ namespace Mono.Collections.DataStructures
 				if (length != 0) {
 					tree_index++;
 					
-					if (key_index == key_length || key[key_index] < tree[tree_index]) {
+					if (key_index == key.Length || key[key_index] < tree[tree_index]) {
 						
 						// The key would be to our left
 						// in the binary tree.
@@ -357,9 +356,10 @@ namespace Mono.Collections.DataStructures
 						
 						// If we get strapped for registers, we can do:
 						// right = (left >> 0x1) + (left & 0x1) - 1;
-						var new_left = left >> 0x1;
-						right = left - new_left - 1;
-						left = new_left;
+						// var new_left = left >> 0x1;
+						// right = left - new_left - 1;
+						right = (left >> 0x1) + (left & 0x1) - 1;
+						left >>= 0x1;
 						
 						// Step ahead
 						continue;
@@ -400,9 +400,10 @@ namespace Mono.Collections.DataStructures
 						
 						// If we get strapped for registers, we can do:
 						// left = (right >> 0x1) + (right & 0x1) - 1;
-						var new_right = right >> 0x1;
-						left = right - new_right - 1;
-						right = new_right;
+						// var new_right = right >> 0x1;
+						// left = right - new_right - 1;
+						left = (right >> 0x1) + (right & 0x1) - 1;
+						right >>= 0x1;
 						
 						// Step ahead
 						continue;
@@ -415,7 +416,7 @@ namespace Mono.Collections.DataStructures
 						length--;
 						
 						while (length != 0) {
-							if (key_index == key_length) {
+							if (key_index == key.Length) {
 							
 								// We have consumed the input string
 								// and no such key exists.
@@ -436,17 +437,18 @@ namespace Mono.Collections.DataStructures
 					}
 				}
 				
+				var children = tree[tree_index];
+				
 				// The node matches the input and
 				// tree_index is positioned on the
 				// number of children under this
 				// node in the radix tree.
-				var children = tree[tree_index];
 				
 				if (children == 0) {
 					
 					// We have reached the end of the tree.
 					
-					if (key_index == key_length) {
+					if (key_index == key.Length) {
 					
 						// And we have consumed all of the
 						// input string, so we have a match!

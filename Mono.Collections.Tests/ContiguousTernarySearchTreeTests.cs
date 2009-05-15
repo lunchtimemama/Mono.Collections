@@ -49,7 +49,7 @@ namespace Mono.Collections.Tests
 			pairs.Add (new KeyValuePair<string, string> ("System_Id", "uuid"));
 			pairs.Add (new KeyValuePair<string, string> ("System_Update_Id", "uuid"));
 			
-			var csrt = new ContiguousSplayedRadixTree<string> (pairs);
+			var csrt = new ContiguousTernarySearchTree<string> (pairs);
 			foreach (var pair in pairs) {
 				Assert.AreEqual (pair.Value, csrt[pair.Key]);
 			}
@@ -68,7 +68,7 @@ namespace Mono.Collections.Tests
 				while (!reader.EndOfStream) {
 					pairs.Add (new KeyValuePair<string, bool> (reader.ReadLine (), true));
 				}
-				var csrt = new ContiguousSplayedRadixTree<bool> (pairs);
+				var csrt = new ContiguousTernarySearchTree<bool> (pairs);
 				foreach (var pair in pairs) {
 					Assert.IsTrue (csrt[pair.Key]);
 				}
